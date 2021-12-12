@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding:0 ;
+        box-sizing: border-box;
+    }
+    body{
+        min-height: 100vh;
+        width: 100%;
+        background-image: url(./img/07808c8884ebbc907529f354f5a1ca17.webp);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        width: 100%;
+        background-attachment: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    h3 {
+    font-size: 100px;
+    font-weight: 600;
+    color: rgb(236, 236, 63);
+    }
+    .countdown{
+        text-align: center;
+    }
+    .countdown ul{
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 10px;
+        text-align : center;
+        justify-content: center;
+    }
+    .countdown li {
+    margin: 2.5rem 5rem;
+    font-size: 25px;
+    text-align: center;
+    color: #F7FAE7;
+    font-weight: 400;
+    }
+    .countdown li span {
+    font-size: 80px;
+    display: block;
+    }
+</style>
+<body>
+    <div class="countdown">
+        <h3>New Year Event</h3>
+        <ul>
+            <li class="days"><span>00</span>days</li>
+            <li class ="hours"><span>00</span>hours</li>
+            <li class ="mins"><span>00</span>mins</li>
+            <li class ="seconds"><span>00</span>seconds</li>
+        </ul>
+    </div>
+</body>
+<script>
+    const newYear = '1 jan 2022'
+    function countdown(){
+        $ = document.querySelector.bind(document)
+        const newDate = new Date(newYear);
+        const curDate = new Date();
+        const totalSeconds = (newDate - curDate) / 1000;
+        const days = Math.floor(totalSeconds / 3600 / 24)
+        const hours = Math.floor(totalSeconds / 3600) % 24
+        const minus = Math.floor(totalSeconds / 60) % 60
+        const seconds = Math.floor(totalSeconds % 60);
+        $('.days span').innerHTML = days;
+        $('.hours span').innerHTML = hours;
+        $('.mins span').innerHTML = minus;
+        $('.seconds span').innerHTML = seconds;
+        if(seconds < 10){
+            $('.seconds span').innerHTML = `0${seconds}`;
+        }
+    }
+    countdown()
+    setInterval(() => {
+        countdown()
+    }, 1000);
+    </script>
+</html>
